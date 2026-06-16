@@ -1,6 +1,6 @@
 // GPU somatic variant calling step using Mutect2
 
-process MUTECTCALLER {
+process PARABRICKS_MUTECTCALLER {
     tag "${meta.id}"
         
     publishDir "${params.outdir}/variants/mutect", mode: 'link'

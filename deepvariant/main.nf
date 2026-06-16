@@ -1,6 +1,6 @@
 // GPU germline variant calling step using DeepVariant
 
-process DEEPVARIANT {
+process PARABRICKS_DEEPVARIANT {
     tag "${meta.id}"
         
     publishDir "${params.outdir}/variants/deepvariant", mode: 'link'

@@ -1,7 +1,7 @@
 // GPU alignment with NVIDIA's Clara Parabricks 'fq2bam' tool
 // This is the equivalent of the 'bwa mem' command, but runs on NVIDIA GPUs 
 
-process FQ2BAM {
+process PARABRICKS_FQ2BAM {
     tag "${meta.id}"
         
     publishDir "${params.outdir}/alignment}", mode: 'link'
@@ -14,7 +14,7 @@ process FQ2BAM {
         tuple val(meta), path("${meta.id}.sorted.bam"), path("${meta.id}.sorted.bam.bai"), emit: bam
         tuple val(meta), path("${meta.id}.dup_metrics.txt"), emit: dup_metrics
 
-    scripts:
+    script:
     def args = task.ext.args ?: ""
     """
     pbrun fq2bam \\

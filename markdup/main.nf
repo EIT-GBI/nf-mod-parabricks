@@ -1,6 +1,6 @@
 // NVIDIA Paracbricks MarkDuplicates tool
 
-process MARKDUP {
+process PARABRICKS_MARKDUP {
     tag "${meta.id}"
 
     publishDir "${params.outdir}/alignment}", mode: 'link'
@@ -13,7 +13,7 @@ process MARKDUP {
         tuple val(meta), path("${meta.id}.markdup.bam"), emit: bam
         tuple val(meta), path("${meta.id}.dup_metrics.txt"), emit: dup_metrics
 
-    scripts:
+    script:
     def args = task.ext.args ?: ""
     """
     pbrun markdup \\
