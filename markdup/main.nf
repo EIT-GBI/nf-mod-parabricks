@@ -3,7 +3,7 @@
 process PARABRICKS_MARKDUP {
     tag "${meta.id}"
 
-    publishDir "${params.outdir}/alignment}", mode: 'link'
+    publishDir "${params.outdir}/alignment", mode: 'link'
 
     input:
         tuple val(meta), path(bam)
