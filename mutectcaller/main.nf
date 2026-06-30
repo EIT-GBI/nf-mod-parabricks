@@ -15,7 +15,7 @@ process PARABRICKS_MUTECTCALLER {
     script:
     def args = task.ext.args ?: ""
     """
-    pbrun mutect2 \\
+    pbrun mutectcaller \\
         ${args} \\
         --ref ${fasta} \\
         --in-bam ${bam} \\

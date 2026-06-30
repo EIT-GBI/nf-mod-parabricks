@@ -19,7 +19,7 @@ process PARABRICKS_DEEPVARIANT {
         ${args} \\
         --ref ${fasta} \\
         --in-bam ${bam} \\
-        --out-vcf ${meta.id}.deepvariant.vcf \\
+        --out-variants ${meta.id}.deepvariant.vcf \\
         --num-gpus ${task.accelerator?.request ?: 1}
     """
 
