@@ -20,10 +20,10 @@ process PARABRICKS_FQ2BAM {
     pbrun fq2bam \\
         ${args} \\
         --ref ${fasta} \\
-        --in-fq ${r1} ${r2} "@RG\\tID:${meta.id}\\tSM:${meta.id}\\tPL:ILLUMINA\\tLB:${meta.id}"
+        --in-fq ${r1} ${r2} "@RG\\tID:${meta.id}\\tSM:${meta.id}\\tPL:ILLUMINA\\tLB:${meta.id}" \\
         --out-bam ${meta.id}.sorted.bam \\
-        --out-duplicate-metrics ${meta.id}.dup_metrics.txt
-        --num-gpus ${task.ext.num_gpus ?: 1}
+        --out-duplicate-metrics ${meta.id}.dup_metrics.txt \\
+        --num-gpus ${task.accelerator?.request ?: 1}
     """
 
     stub:

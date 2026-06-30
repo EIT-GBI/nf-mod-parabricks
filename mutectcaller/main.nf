@@ -20,7 +20,7 @@ process PARABRICKS_MUTECTCALLER {
         --ref ${fasta} \\
         --in-bam ${bam} \\
         --out-vcf ${meta.id}.mutect.vcf \\
-        --num-gpus ${task.ext.num_gpus ?: 1}
+        --num-gpus ${task.accelerator?.request ?: 1}
     """
 
     stub:
