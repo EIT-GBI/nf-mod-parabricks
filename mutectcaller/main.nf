@@ -21,7 +21,7 @@ process PARABRICKS_MUTECTCALLER {
         --in-tumor-bam ${bam} \\
         --tumor-name ${meta.id} \\\
         --out-vcf ${meta.id}.mutect.vcf \\
-        --num-gpus ${task.accelerator?.request ?: 1}
+        --num-gpus ${task.accelerator?.request ?: 1} 
     """
 
     stub:
