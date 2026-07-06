@@ -18,7 +18,7 @@ process PARABRICKS_MUTECTCALLER {
     pbrun mutectcaller \\
         ${args} \\
         --ref ${fasta} \\
-        --in-bam ${bam} \--in-tumor-bam ${bam} \\
+        --in-tumor-bam ${bam} \\
         --tumor-name ${meta.id} \\\
         --out-vcf ${meta.id}.mutect.vcf \\
         --num-gpus ${task.accelerator?.request ?: 1}
