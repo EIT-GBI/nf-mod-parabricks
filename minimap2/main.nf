@@ -1,7 +1,7 @@
 // GPU-accelerated version of minimap2 for long-read alignment
 
 
-proces PARABRICKS_MINIMAP2 {
+process PARABRICKS_MINIMAP2 {
     tag "${meta.id}"
         
     publishDir "${params.outdir}/alignment", mode: 'link'
