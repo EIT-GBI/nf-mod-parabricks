@@ -11,7 +11,7 @@ proces PARABRICKS_MINIMAP2 {
         tuple path(fasta), path(fai)
 
     output:
-        tuple val(meta), path("${meta.id}.sorted.bam"), path("${meta.id}.sorted.bai") emit: bam
+        tuple val(meta), path("${meta.id}.sorted.bam"), path("${meta.id}.sorted.bai"), emit: bam
 
     script:
     def args = task.ext.args ?: ""
