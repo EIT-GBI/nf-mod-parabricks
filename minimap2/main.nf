@@ -25,7 +25,7 @@ process PARABRICKS_MINIMAP2 {
         --out-bam ${meta.id}.sorted.bam \\
         --num-gpus ${task.accelerator?.request ?: 1}
 
-    samtools index -@ ${task.cpus ?: 1} ${meta.id}.sorted.bam
+    samtools index -@ ${task.cpus ?: 1} ${meta.id}.sorted.bam ${meta.id}.sorted.bai
     """
 
     stub:
