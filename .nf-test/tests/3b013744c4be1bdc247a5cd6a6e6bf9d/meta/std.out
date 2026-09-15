@@ -1,5 +1,0 @@
-[PIPELINE] nf-mod-parabricks 0.0.0 | profile=standard
-[WORKDIR] /Users/pauline.fourgoux/Documents/Code/nf-dnaseq/modules/parabricks/.nf-test/tests/3b013744c4be1bdc247a5cd6a6e6bf9d/work
-[PROCESS c5/44ceda] PARABRICKS_MINIMAP2 (test)
-
-[SUCCESS] completed=1 failed=0 cached=0
