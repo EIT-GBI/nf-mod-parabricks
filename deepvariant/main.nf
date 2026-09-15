@@ -3,7 +3,6 @@
 process PARABRICKS_DEEPVARIANT {
     tag "${meta.id}"
         
-    publishDir "${params.outdir}/variants/deepvariant", mode: 'link'
 
     input:
         tuple val(meta), path(bam), path(bai)

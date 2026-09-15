@@ -3,7 +3,6 @@
 process PARABRICKS_MUTECTCALLER {
     tag "${meta.id}"
         
-    publishDir "${params.outdir}/variants/mutect", mode: 'link'
 
     input:
         tuple val(meta), path(bam), path(bai)

@@ -4,7 +4,6 @@
 process PARABRICKS_FQ2BAM {
     tag "${meta.id}"
         
-    publishDir "${params.outdir}/alignment", mode: 'link'
 
     input:
         tuple val(meta), path(r1), path(r2)
