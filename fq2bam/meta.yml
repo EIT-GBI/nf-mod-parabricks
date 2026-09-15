@@ -1,0 +1,39 @@
+name: parabricks_fq2bam
+description: |
+  GPU-accelerated alignment, sorting and duplicate marking in one step.
+keywords:
+  - gpu
+  - alignment
+  - parabricks
+  - bam
+tools:
+  - Clara:
+      description: |
+        Clara Parabricks pbrun fq2bam
+
+input:
+  - reads:
+      type: map/file
+      description: |
+        Sample metadata map and the paired FASTQ files.
+      pattern: "tuple val(meta), path(r1), path(r2)"
+  - index:
+      type: map/file
+      description: |
+        Reference FASTA and its BWA index files.
+      pattern: "tuple path(fasta), path(fasta_index)"
+
+output:
+  - bam:
+      type: map/file
+      description: |
+        Sorted, duplicate-marked BAM and index.
+      pattern: "tuple val(meta), path(*.sorted.bam), path(*.sorted.bam.bai)"
+  - dup_metrics:
+      type: map/file
+      description: |
+        Duplicate metrics.
+      pattern: "tuple val(meta), path(*.dup_metrics.txt)"
+
+authors:
+  - "EIT Generative Biology Institute"

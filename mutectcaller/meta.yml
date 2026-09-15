@@ -1,0 +1,35 @@
+name: parabricks_mutectcaller
+description: |
+  GPU-accelerated somatic variant calling with Mutect2.
+keywords:
+  - gpu
+  - variant calling
+  - somatic
+  - mutect2
+  - parabricks
+tools:
+  - Clara:
+      description: |
+        Clara Parabricks pbrun mutectcaller
+
+input:
+  - bam:
+      type: map/file
+      description: |
+        Sample metadata map, BAM and its index.
+      pattern: "tuple val(meta), path(bam), path(bai)"
+  - fasta:
+      type: map/file
+      description: |
+        Reference FASTA and its .fai index.
+      pattern: "tuple path(fasta), path(fai)"
+
+output:
+  - vcf:
+      type: map/file
+      description: |
+        Somatic variant calls.
+      pattern: "tuple val(meta), path(*.mutect.vcf)"
+
+authors:
+  - "EIT Generative Biology Institute"

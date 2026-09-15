@@ -1,0 +1,34 @@
+name: parabricks_deepvariant
+description: |
+  GPU-accelerated germline variant calling with DeepVariant.
+keywords:
+  - gpu
+  - variant calling
+  - deepvariant
+  - parabricks
+tools:
+  - Clara:
+      description: |
+        Clara Parabricks pbrun deepvariant
+
+input:
+  - bam:
+      type: map/file
+      description: |
+        Sample metadata map, BAM and its index.
+      pattern: "tuple val(meta), path(bam), path(bai)"
+  - fasta:
+      type: map/file
+      description: |
+        Reference FASTA and its .fai index.
+      pattern: "tuple path(fasta), path(fai)"
+
+output:
+  - vcf:
+      type: map/file
+      description: |
+        Germline variant calls.
+      pattern: "tuple val(meta), path(*.deepvariant.vcf)"
+
+authors:
+  - "EIT Generative Biology Institute"

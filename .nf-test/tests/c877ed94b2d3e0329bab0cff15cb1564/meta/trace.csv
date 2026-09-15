@@ -1,0 +1,2 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+1	47/980fd7	1812	PARABRICKS_FQ2BAM (test)	COMPLETED	0	2026-09-15 14:05:13.669	99ms	13ms	-	-	-	-	-
