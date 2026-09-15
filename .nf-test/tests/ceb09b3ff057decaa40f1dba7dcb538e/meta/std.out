@@ -1,5 +1,5 @@
 [PIPELINE] nf-mod-parabricks 0.0.0 | profile=standard
 [WORKDIR] /Users/pauline.fourgoux/Documents/Code/nf-dnaseq/modules/parabricks/.nf-test/tests/ceb09b3ff057decaa40f1dba7dcb538e/work
-[PROCESS b8/188663] PARABRICKS_MUTECTCALLER (test)
+[PROCESS 02/5c913d] PARABRICKS_MUTECTCALLER (test)
 
 [SUCCESS] completed=1 failed=0 cached=0
