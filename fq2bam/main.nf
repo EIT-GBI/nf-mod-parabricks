@@ -28,10 +28,15 @@ process PARABRICKS_FQ2BAM {
     if [ ! -e "\${ref}.bwt" ]; then
         mkdir -p pbref
         cp -L ${fasta} pbref/${fasta}
+        # every staged sibling: the bwa index and the .fai
         for f in ${fasta}.*; do
             [ -e "\$f" ] && cp -L "\$f" pbref/
         done
+        # and the .fai from beside the original, if it only exists there
+        [ -e "\${ref}.fai" ] && [ ! -e "pbref/${fasta}.fai" ] && cp -L "\${ref}.fai" pbref/
         ref="\$PWD/pbref/${fasta}"
+        echo "Reference materialised for pbrun:"
+        ls -1 pbref/
     fi
 
     pbrun fq2bam \\
