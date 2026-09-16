@@ -16,9 +16,27 @@ process PARABRICKS_FQ2BAM {
     script:
     def args = task.ext.args ?: ""
     """
+    # pbrun resolves --ref to its real path and then looks for the BWA index
+    # beside *that* file. Nextflow stages inputs as symlinks, so pointing it at
+    # the staged reference makes it look next to the original instead, where an
+    # index built by BWA_INDEX does not exist.
+    #
+    # If the original is already indexed, use it as-is. Otherwise gather real
+    # copies of the reference and its index into one directory here, so the two
+    # sit together wherever pbrun resolves them to.
+    ref=\$(readlink -f ${fasta})
+    if [ ! -e "\${ref}.bwt" ]; then
+        mkdir -p pbref
+        cp -L ${fasta} pbref/${fasta}
+        for f in ${fasta}.*; do
+            [ -e "\$f" ] && cp -L "\$f" pbref/
+        done
+        ref="\$PWD/pbref/${fasta}"
+    fi
+
     pbrun fq2bam \\
         ${args} \\
-        --ref ${fasta} \\
+        --ref "\$ref" \\
         --in-fq ${r1} ${r2} "@RG\\tID:${meta.id}\\tSM:${meta.id}\\tPL:ILLUMINA\\tLB:${meta.id}\\tPU:${meta.id}" \\
         --out-bam ${meta.id}.sorted.bam \\
         --out-duplicate-metrics ${meta.id}.dup_metrics.txt \\
