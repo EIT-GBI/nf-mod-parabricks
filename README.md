@@ -2,7 +2,10 @@
 
 Nextflow module for NVIDIA Clara Parabricks (GPU-accelerated alignment and variant calling). Used as a git submodule by pipelines.
 
-Image: `nvcr.io/nvidia/clara/clara-parabricks (NVIDIA NGC; this repo ships no image)`
+Image: `nvcr.io/nvidia/clara/clara-parabricks:4.7.1-1`
+
+The image comes from NVIDIA NGC; this repo builds none of its own, so its
+tag is pinned here by hand rather than moved with the module version.
 
 ## Processes
 
