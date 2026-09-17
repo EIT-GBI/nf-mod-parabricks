@@ -40,6 +40,14 @@ process {
 }
 ```
 
+## Read groups
+
+`PARABRICKS_FQ2BAM` composes the `@RG` read group from the sample's `meta`:
+`meta.id` becomes `ID`, `SM`, `LB` and `PU`, and `meta.platform` becomes `PL`,
+defaulting to `ILLUMINA` when unset. This matches `BWA_MEM` in the bwa module,
+so a sample records the same platform whichever aligner the pipeline routes it
+to.
+
 ## Use as submodule
 
 Pin to a release tag rather than a branch, so pipeline runs stay reproducible:

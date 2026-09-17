@@ -14,6 +14,9 @@ process PARABRICKS_FQ2BAM {
         tuple val(meta), path("${meta.id}.dup_metrics.txt"), emit: dup_metrics
 
     script:
+    // PL comes in on the sample's meta, matching BWA_MEM on the CPU path, so a
+    // run that is not Illumina records the right platform on either aligner.
+    def platform = meta.platform ?: 'ILLUMINA'
     def args = task.ext.args ?: ""
     """
     # pbrun resolves --ref to its real path and then looks for the BWA index
@@ -42,7 +45,7 @@ process PARABRICKS_FQ2BAM {
     pbrun fq2bam \\
         ${args} \\
         --ref "\$ref" \\
-        --in-fq ${r1} ${r2} "@RG\\tID:${meta.id}\\tSM:${meta.id}\\tPL:ILLUMINA\\tLB:${meta.id}\\tPU:${meta.id}" \\
+        --in-fq ${r1} ${r2} "@RG\\tID:${meta.id}\\tSM:${meta.id}\\tPL:${platform}\\tLB:${meta.id}\\tPU:${meta.id}" \\
         --out-bam ${meta.id}.sorted.bam \\
         --out-duplicate-metrics ${meta.id}.dup_metrics.txt \\
         --num-gpus ${task.accelerator?.request ?: 1}
