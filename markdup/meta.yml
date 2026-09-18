@@ -1,0 +1,38 @@
+name: parabricks_markdup
+description: |
+  GPU-accelerated duplicate marking on an existing BAM.
+keywords:
+  - gpu
+  - duplicates
+  - parabricks
+tools:
+  - Clara:
+      description: |
+        Clara Parabricks pbrun markdup
+
+input:
+  - bam:
+      type: map/file
+      description: |
+        Sample metadata map and a BAM.
+      pattern: "tuple val(meta), path(bam)"
+  - fasta:
+      type: map/file
+      description: |
+        Reference FASTA and its .fai index.
+      pattern: "tuple path(fasta), path(fai)"
+
+output:
+  - bam:
+      type: map/file
+      description: |
+        Duplicate-marked BAM.
+      pattern: "tuple val(meta), path(*.markdup.bam)"
+  - dup_metrics:
+      type: map/file
+      description: |
+        Duplicate metrics.
+      pattern: "tuple val(meta), path(*.dup_metrics.txt)"
+
+authors:
+  - "EIT Generative Biology Institute"

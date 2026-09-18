@@ -1,0 +1,34 @@
+name: parabricks_minimap2
+description: |
+  GPU-accelerated long-read alignment.
+keywords:
+  - gpu
+  - alignment
+  - long read
+  - parabricks
+tools:
+  - Clara:
+      description: |
+        Clara Parabricks pbrun minimap2
+
+input:
+  - fastq:
+      type: map/file
+      description: |
+        Sample metadata map and a FASTQ file.
+      pattern: "tuple val(meta), path(fastq)"
+  - fasta:
+      type: map/file
+      description: |
+        Reference FASTA and its .fai index.
+      pattern: "tuple path(fasta), path(fai)"
+
+output:
+  - bam:
+      type: map/file
+      description: |
+        Sorted BAM and index.
+      pattern: "tuple val(meta), path(*.sorted.bam), path(*.sorted.bai)"
+
+authors:
+  - "EIT Generative Biology Institute"

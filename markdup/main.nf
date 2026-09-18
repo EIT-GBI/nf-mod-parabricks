@@ -3,8 +3,6 @@
 process PARABRICKS_MARKDUP {
     tag "${meta.id}"
 
-    publishDir "${params.outdir}/alignment", mode: 'link'
-
     input:
         tuple val(meta), path(bam)
         tuple path(fasta), path(fai)
@@ -22,7 +20,7 @@ process PARABRICKS_MARKDUP {
         --in-bam ${bam} \\
         --out-bam ${meta.id}.markdup.bam \\
         --out-duplicate-metrics ${meta.id}.dup_metrics.txt
-    """"
+    """
 
     stub:
     """
